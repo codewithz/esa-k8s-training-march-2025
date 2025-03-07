@@ -25,3 +25,23 @@ kubectl get statefulset
 NAME                                                   READY   AGE
 alertmanager-prometheus-kube-prometheus-alertmanager   1/1     2m12s
 prometheus-prometheus-kube-prometheus-prometheus       1/1     2m12s
+
+# The prometheus instance is using a ClusterIP service called prometheus-kube-prometheus-prometheus, 
+# which means it is only accessible within the cluster, and we can’t access the UI by default.
+
+export KUBE_EDITOR="code --wait"
+
+kubectl edit svc prometheus-kube-prometheus-prometheus
+
+# Make some changes in this service. 
+# Change type: ClusterIP to type: NodePort and 
+# add nodePort: 30111 under - name: http-web.
+
+
+kubectl get svc 
+
+# Verify if it is updated to NodePort
+
+kubectl get nodes -o wide
+
+# FInd the IP and go to ip:30111 to check Prometheus server
