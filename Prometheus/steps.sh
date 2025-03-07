@@ -53,3 +53,18 @@ kubectl apply -f ingress.yaml
 kubectl apply -f api-deploy.yaml
 
 kubectl apply -f api-service.yml
+
+# Let’s update prom-ingress ingress to setup a rule to route any traffic to the host 
+
+kubectl edit ingress prom-ingress
+
+  - host: api.kk-demo.com
+    http:
+      paths:
+      - backend:
+          service:
+            name: api-service
+            port:
+              number: 3000
+        path: /
+        pathType: Prefix
