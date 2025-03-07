@@ -70,3 +70,14 @@ kubectl edit ingress prom-ingress
               number: 3000
         path: /
         pathType: Prefix
+
+
+        # ----------------------------------------
+
+        # Now that the API is installed, we need to configure Prometheus to scrape the API pods. 
+        # Instead of manually going into the prometheus configs and adding another scrape config, 
+        # with the prometheus operator, we can declaratively define all the endpoints prometheus 
+        # should scrape by creating a ServiceMonitor. Prometheus will automatically pickup all
+        #  targets to scrape from the defined ServiceMonitors.
+
+        kubectl apply -f api-servicemonitor.yaml
