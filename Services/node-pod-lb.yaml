@@ -1,0 +1,13 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: my-nginx-lb
+  labels:
+    app: my-node-lb-app
+
+spec:
+  containers:
+    - name: my-app-container
+      image: nginx:alpine
+      ports:
+        - containerPort: 80

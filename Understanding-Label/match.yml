@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: my-app-rs
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: louis
+      company: esa
+  template:
+    metadata:
+      labels:
+        name: louis
+        company: esa
+    spec:
+      containers:
+        - name: my-app-container
+          image: httpd

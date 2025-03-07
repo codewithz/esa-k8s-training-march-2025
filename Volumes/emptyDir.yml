@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: shared-volume-pod
+spec:
+  containers:
+    - name: app-container
+      image: busybox
+      command: ["sh", "-c", "echo 'Hello from App' > /data/message.txt; sleep 3600"]
+      volumeMounts:
+        - mountPath: /data
+          name: shared-storage
+    - name: reader-container
+      image: busybox
+      command: ["sh", "-c", "cat /data/message.txt; sleep 3600"]
+      volumeMounts:
+        - mountPath: /data
+          name: shared-storage
+  volumes:
+    - name: shared-storage
+      emptyDir: {}

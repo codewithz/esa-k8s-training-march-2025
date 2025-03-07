@@ -1,0 +1,11 @@
+kind: Service
+apiVersion: v1 
+metadata:
+  name: my-clusterip-service
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8081      #Port exposed by the service
+      targetPort: 80  #port inside the Pod
+  selector:
+    app: my-node-test-app

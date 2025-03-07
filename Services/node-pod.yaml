@@ -1,0 +1,13 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: kube
+  labels:
+    app: my-node-test-app
+
+spec:
+  containers:
+    - name: my-app-container
+      image: nginx:alpine
+      ports:
+        - containerPort: 80

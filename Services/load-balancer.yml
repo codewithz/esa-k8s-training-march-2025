@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-load-balancer-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: my-node-lb-app
+  ports:
+  - port: 80        # External Port [Accessible from Internet]
+    targetPort: 80     # Port the application is listening to inside the pod
+
+  

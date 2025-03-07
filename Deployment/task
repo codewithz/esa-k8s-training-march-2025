@@ -1,0 +1,8 @@
+Create a Deployment 
+Replicas :4
+Image: bitnami/apache:2.4.54
+label: application=apache-app,rel=test
+
+
+RollingUpdate 
+Image: bitnami/apache:2.4.57
