@@ -51,3 +51,5 @@ kubectl get nodes -o wide
 kubectl apply -f ingress.yaml
 
 kubectl apply -f api-deploy.yaml
+
+kubectl apply -f api-service.yml
