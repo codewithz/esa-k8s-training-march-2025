@@ -45,3 +45,5 @@ kubectl get svc
 kubectl get nodes -o wide
 
 # FInd the IP and go to ip:30111 to check Prometheus server
+
+# Now, configure an ingress to forward traffic to the prometheus service.
